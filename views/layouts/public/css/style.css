@@ -1,0 +1,29 @@
+/* This is a custom CSS for the handlebars */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.navbar {
+    margin-bottom: 20px;
+}
+
+.card {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.footer {
+    padding: 20px 0;
+    background-color: #333;
+    color: white;
+}
+
+.button.is-primary {
+    background-color: #ff3860;
+    border-color: transparent;
+}
+
+.button.is-primary:hover {
+    background-color: #ff4f7d;
+}
