@@ -2,8 +2,27 @@ const router = require('express').Router();
 const { Destination, User } = require('../models');
 const withAuth = require('../utils/auth');
 
-// GET request to render the homepage with all destinations
-router.get('/', async (req, res) => {
+// GET request to render the homepage or redirect to login/register if not logged in
+router.get('/', (req, res) => {
+    if (req.session.logged_in) {
+        res.redirect('/home');
+    } else {
+        res.render('login');  // Render login page by default
+    }
+});
+
+// GET request to render the registration page
+router.get('/register', (req, res) => {
+    if (req.session.logged_in) {
+        res.redirect('/home');
+        return;
+    }
+
+    res.render('register');
+});
+
+// GET request to render the main homepage with all destinations
+router.get('/home', withAuth, async (req, res) => {
     try {
         const destinationData = await Destination.findAll({
             include: [{ model: User }]
@@ -18,16 +37,6 @@ router.get('/', async (req, res) => {
     } catch (err) {
         res.status(500).json(err);
     }
-});
-
-// GET request to render the login page
-router.get('/login', (req, res) => {
-    if (req.session.logged_in) {
-        res.redirect('/');
-        return;
-    }
-
-    res.render('login');
 });
 
 // GET request to render a specific destination by id

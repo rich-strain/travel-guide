@@ -1,13 +1,15 @@
+<!-- views/partials/navbar.handlebars -->
+
 <nav class="navbar is-primary">
     <div class="navbar-brand">
-        <a class="navbar-item" href="/">
+        <a class="navbar-item" href="{{#if logged_in}}/home{{else}}/{{/if}}">
             Travel Guide
         </a>
     </div>
     <div class="navbar-menu">
         <div class="navbar-start">
-            <a class="navbar-item" href="/">Home</a>
             {{#if logged_in}}
+            <a class="navbar-item" href="/home">Home</a>
             <a class="navbar-item" href="/profile">Profile</a>
             {{/if}}
         </div>
@@ -15,11 +17,11 @@
             {{#if logged_in}}
             <div class="navbar-item">
                 <form action="/api/users/logout" method="POST">
-                    <button type="submit" class="button is-light">Logout</button>
+                    <button type="submit" class="button is-light">Sign Out</button>
                 </form>
             </div>
             {{else}}
-            <a class="navbar-item" href="/login">Login</a>
+            <a class="navbar-item" href="/register">Register</a>
             {{/if}}
         </div>
     </div>
