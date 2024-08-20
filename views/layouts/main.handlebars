@@ -7,7 +7,7 @@
     <!-- This is the Bulma CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="public/css/style.css">
+    <link rel="stylesheet" href="public/css/styles.css">
 </head>
 <body>
     <header>
@@ -20,7 +20,9 @@
             <div class="navbar-menu">
                 <div class="navbar-start">
                     <a class="navbar-item" href="/">Home</a>
+                    {{#if logged_in}}
                     <a class="navbar-item" href="/profile">Profile</a>
+                    {{/if}}
                 </div>
                 <div class="navbar-end">
                     {{#if logged_in}}
@@ -45,10 +47,9 @@
 
     <footer class="footer">
         <div class="content has-text-centered">
-            <p>
-                &copy; 2024 Travel Guide. All rights reserved.
-            </p>
+            <p>&copy; 2024 Travel Guide. All rights reserved.</p>
         </div>
     </footer>
 </body>
 </html>
+
