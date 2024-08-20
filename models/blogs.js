@@ -19,6 +19,10 @@ Blogs.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    imageURL: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
     date_created: {
       type: DataTypes.DATE,
       allowNull: false,
@@ -37,7 +41,7 @@ Blogs.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'destination',
+    modelName: 'Blogs',
   }
 );
 
