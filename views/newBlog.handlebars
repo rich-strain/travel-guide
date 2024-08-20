@@ -1,0 +1,99 @@
+<h1 class='title'>Submit New Blog</h1>
+<form id='newBlog' method='POST'>
+  <div class='field'>
+    <label class='label'>City</label>
+    <div class='control'>
+      <input class='input' type='text' placeholder='City Name' id='city' />
+    </div>
+  </div>
+
+  <div class='field'>
+    <label class='label'>State</label>
+    <div class='control'>
+      <div class='select'>
+        <select id='state'>
+          <option value=''>Select State</option>
+          <option value='1'>Alabama</option>
+          <option value='2'>Alaska</option>
+          <option value='3'>Arizona</option>
+          <option value='4'>Arkansas</option>
+          <option value='5'>California</option>
+          <option value='6'>Colorado</option>
+          <option value='7'>Connecticut</option>
+          <option value='8'>Delaware</option>
+          <option value='9'>Florida</option>
+          <option value='10'>Georgia</option>
+          <option>Hawaii</option>
+          <option>Idaho</option>
+          <option>Illinois</option>
+          <option>Indiana</option>
+          <option>Iowa</option>
+          <option>Kansas</option>
+          <option>Kentucky</option>
+          <option>Louisiana</option>
+          <option>Maine</option>
+          <option>Maryland</option>
+          <option>Massachusetts</option>
+          <option>Michigan</option>
+          <option>Minnesota</option>
+          <option>Mississippi</option>
+          <option>Missouri</option>
+          <option>Montana</option>
+          <option>Nebraska</option>
+          <option>Nevada</option>
+          <option>New Hampshire</option>
+          <option>New Jersey</option>
+          <option>New Mexico</option>
+          <option>New York</option>
+          <option>North Carolina</option>
+          <option>North Dakota</option>
+          <option>Ohio</option>
+          <option>Oklahoma</option>
+          <option>Oregon</option>
+          <option>Pennsylvania</option>
+          <option>Rhode Island</option>
+          <option>South Carolina</option>
+          <option>South Dakota</option>
+          <option>Tennessee</option>
+          <option>Texas</option>
+          <option>Utah</option>
+          <option>Vermont</option>
+          <option>Virginia</option>
+          <option>Washington</option>
+          <option>West Virginia</option>
+          <option>Wisconsin</option>
+          <option>Wyoming</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class='field'>
+    <label class='label'>Image URL</label>
+    <div class='control'>
+      <input class='input is-static' type='text' placeholder='Image URL' id='imageURL' />
+    </div>
+    <div class='control'>
+      <button class='button is-link' id='uploaderBtn'>Upload Image</button>
+    </div>
+  </div>
+
+  <div class='field'>
+    <label class='label'>Blog Content</label>
+    <div class='control'>
+      <textarea class='textarea' placeholder='Textarea' id='blogContent'></textarea>
+    </div>
+  </div>
+
+  <div class='field is-grouped'>
+    <div class='control'>
+      <button class='button is-link' id='submitNewBlogBtn'>Submit</button>
+    </div>
+    <div class='control'>
+      <button class='button is-link is-light' id='cancelBtn'>Cancel</button>
+    </div>
+  </div>
+</form>
+<script src='https://js.bytescale.com/uploader/v3'></script>
+<script src='./js/uploader.js'></script>
+<script src='./js/newBlog.js'></script>
