@@ -10,4 +10,4 @@ Destination.belongsTo(User, {
   foreignKey: 'user_id',
 });
 
-module.exports = { User, Destination };
+module.exports = { User, Destination};
