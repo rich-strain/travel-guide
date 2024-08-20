@@ -15,13 +15,18 @@ Destination.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    state: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     country: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    description: {
-      type: DataTypes.TEXT,
-    },
+    // Should be post in the Blog model
+    // description: {
+    //   type: DataTypes.TEXT,
+    // },
     date_created: {
       type: DataTypes.DATE,
       allowNull: false,
