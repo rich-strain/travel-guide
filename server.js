@@ -13,9 +13,6 @@ const exphbs = require('express-handlebars');
 // Import the routes from the controllers folder
 const routes = require('./controllers');
 
-// Import the custom helpers if needed
-// const helpers = require('./utils/helpers');
-
 // Import the Sequelize Connection
 const sequelize = require('./config/connection');
 
@@ -25,16 +22,17 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const app = express(); // Initialize the Express.js application
 const PORT = process.env.PORT || 3001; // Set the port for the application
 
-// Set up Handlebars.js engine
-// If we use helpers we can pass them in as an object
-// const hbs = exphbs.create({ helpers });
-const hbs = exphbs.create();
+// Set up Handlebars.js engine with default layout
+const hbs = exphbs.create({
+  defaultLayout: 'main', // Set 'main' as the default layout
+  layoutsDir: path.join(__dirname, 'views/layouts'), // Directory for layout templates
+});
 
 // Configure the session object
 const sess = {
   secret: 'Super secret secret',
   cookie: {
-    maxAge: 300000,
+    maxAge: 300000, // 5 minutes
     httpOnly: true,
     secure: false,
     sameSite: 'strict',
