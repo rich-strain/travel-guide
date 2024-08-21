@@ -28,4 +28,4 @@ State.init(
     modelName: 'state',
   }
 );
-module.exports = Image;
+module.exports = State;
