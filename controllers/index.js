@@ -8,4 +8,5 @@ router.use('/', renderRoutes);
 // Use the API routes
 router.use('/api', apiRoutes);
 
+// Export the router
 module.exports = router;
