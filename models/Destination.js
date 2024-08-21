@@ -23,10 +23,6 @@ Destination.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    // Should be post in the Blog model
-    // description: {
-    //   type: DataTypes.TEXT,
-    // },
     date_created: {
       type: DataTypes.DATE,
       allowNull: false,
