@@ -23,22 +23,12 @@ Destination.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    // Should be post in the Blog model
-    // description: {
-    //   type: DataTypes.TEXT,
-    // },
     date_created: {
       type: DataTypes.DATE,
       allowNull: false,
       defaultValue: DataTypes.NOW,
     },
-    user_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'user',
-        key: 'id',
-      },
-    },
+
   },
   {
     sequelize,
