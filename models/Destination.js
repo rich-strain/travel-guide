@@ -45,7 +45,7 @@ Destination.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'Destination',
+    modelName: 'destination',
   }
 );
 

@@ -1,13 +1,30 @@
 const User = require('./User');
 const Destination = require('./Destination');
+const Blogs = require('./blogs');
 
-User.hasMany(Destination, {
+
+
+
+User.belongsToMany(Destination, {
   foreignKey: 'user_id',
-  onDelete: 'CASCADE',
+  onDelete: 'SET NULL',
+  through:{
+    model: Blogs,
+    unique: false
+  },
 });
 
-Destination.belongsTo(User, {
+
+Destination.belongsToMany(User, {
   foreignKey: 'user_id',
+  onDelete: 'SET NULL',
+  through:{
+    model: Blogs,
+    unique: false
+  },
 });
 
-module.exports = { User, Destination};
+
+
+
+module.exports = { User, Destination, Blogs};
