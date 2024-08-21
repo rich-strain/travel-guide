@@ -1,17 +1,22 @@
 [
   {
     "name": "Rich",
-    "email": "richardstrain@gmail.com",
+    "email": "rich@bootcamp.com",
     "password": "password"
   },
   {
-    "name": "Lernantino",
-    "email": "lernantino@gmail.com",
-    "password": "password12345"
+    "name": "Jovanne",
+    "email": "jovanne@bootcamp.com",
+    "password": "password"
   },
   {
-    "name": "Amiko",
-    "email": "amiko2k20@aol.com",
-    "password": "password12345"
+    "name": "Edudardo",
+    "email": "eduardo@bootcamp.com",
+    "password": "password"
+  },
+  {
+    "name": "Jordan",
+    "email": "jordan@gmail.com",
+    "password": "password"
   }
 ]
