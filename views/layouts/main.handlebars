@@ -6,7 +6,7 @@
     <!-- This is the Bulma CSS -->
     <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css' />
     <!-- Custom CSS -->
-    <link rel='stylesheet' href='./css/style.css' />
+    <link rel='stylesheet' href='./css/styles.css' />
   </head>
   <body>
     <header>
@@ -20,7 +20,8 @@
           <div class='navbar-start'>
             <a class='navbar-item' href='/'>Home</a>
             {{#if logged_in}}
-              <a class='navbar-item' href='/profile'>Profile</a>
+              <a class='navbar-item' href='/profile'>Your Destinations</a>
+              <a class='navbar-item' href='/newBlog'>Add Destination</a>
             {{/if}}
           </div>
           <div class='navbar-end'>
