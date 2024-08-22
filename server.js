@@ -23,7 +23,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 const sess = {
     secret: 'Super secret secret',
     cookie: {
-        maxAge: 300000, // 5 minutes
+        maxAge: 3000000, // 50 minutes
         httpOnly: true,
         secure: false,
         sameSite: 'strict',

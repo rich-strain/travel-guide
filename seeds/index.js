@@ -23,8 +23,23 @@ const seedDatabase = async () => {
     individualHooks: true,
     returning: true,
   });
-
+const states = await State.bulkCreate(stateData, {
+    individualHooks: true,
+    returning: true,
+  
+  });
   process.exit(0);
 };
+
+// const seedState = async () => {
+//   await sequelize.sync({ force: true });
+
+  
+//   process.exit(0);
+// };
+
+
+// seedState();
+
 
 seedDatabase();
