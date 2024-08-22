@@ -1,32 +1,32 @@
 [
   {
-    "city": "Bali",
-    "country": "Indonesia",
-    "description": "Bali is an Indonesian island known for its forested volcanic mountains, iconic rice paddies, beaches and coral reefs. The island is home to religious sites such as cliffside Uluwatu Temple. To the south, the beachside city of Kuta has lively bars, while Seminyak, Sanur and Nusa Dua are popular resort towns. The island is also known for its yoga and meditation retreats.",
+    "city": "St. Augustine",
+    "state": "Florida",
+    "country": "United States",
     "user_id": 1
   },
   {
-    "city": "Paris",
-    "country": "France",
-    "description": "Paris, France's capital, is a major European city and a global center for art, fashion, gastronomy and culture. Its 19th-century cityscape is crisscrossed by wide boulevards and the River Seine. Beyond such landmarks as the Eiffel Tower and the 12th-century, Gothic Notre-Dame cathedral, the city is known for its cafe culture and designer boutiques along the Rue du Faubourg Saint-Honoré.",
+    "city": "Miami",
+    "state": "Florida",
+    "country": "United States",
     "user_id": 3
   },
   {
-    "city": "New York",
+    "city": "Hana",
+    "state": "Hawaii",
     "country": "United States",
-    "description": "New York City comprises 5 boroughs sitting where the Hudson River meets the Atlantic Ocean. At its core is Manhattan, a densely populated borough that’s among the world’s major commercial, financial and cultural centers. Its iconic sites include skyscrapers such as the Empire State Building and sprawling Central Park. Broadway theater is staged in neon-lit Times Square.",
     "user_id": 2
   },
   {
-    "city": "Tokyo",
-    "country": "Japan",
-    "description": "Tokyo, Japan’s busy capital, mixes the ultramodern and the traditional, from neon-lit skyscrapers to historic temples. The opulent Meiji Shrine is known for its towering gate and surrounding woods. The Imperial Palace sits amid large public gardens. The city's many museums offer exhibits ranging from classical art (in the Tokyo National Museum) to a reconstructed kabuki theater (in the Edo-Tokyo Museum).",
-    "user_id": 1
+    "city": "Islamorada",
+    "state": "Florida",
+    "country": "United States",
+    "user_id": 3
   },
   {
-    "city": "Cape Town",
-    "country": "South Africa",
-    "description": "Cape Town is a port city on South Africa’s southwest coast, on a peninsula beneath the imposing Table Mountain. Slowly rotating cable cars climb to the mountain’s flat top, from which there are sweeping views of the city, the busy harbor and boats heading for Robben Island, the notorious prison that once held Nelson Mandela, which is now a living museum.",
+    "city": "Denver",
+    "state": "Colorado",
+    "country": "United States",
     "user_id": 1
   }
 ]

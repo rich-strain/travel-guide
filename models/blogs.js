@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Destination extends Model { }
+class Blogs extends Model {}
 
-Destination.init(
+Blogs.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -11,32 +11,45 @@ Destination.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    city: {
+    title: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    state: {
-      type: DataTypes.STRING,
+    post: {
+      type: DataTypes.TEXT, // Changed from STRING to TEXT to allow for longer posts, STRING has a limit of 255 characters
       allowNull: false,
     },
-    country: {
+    imageURL: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     date_created: {
       type: DataTypes.DATE,
       allowNull: false,
       defaultValue: DataTypes.NOW,
     },
-
+    user_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'user',
+        key: 'id',
+      },
+    },
+    destination_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'destination',
+        key: 'id',
+      },
+    },
   },
   {
     sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'destination',
+    modelName: 'blogs',
   }
 );
 
-module.exports = Destination;
+module.exports = Blogs;

@@ -1,0 +1,116 @@
+/* Base styles for the handlebars */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #ff3860;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-item {
+    color: white;
+    font-weight: bold;
+}
+
+.navbar-item:hover {
+    background-color: #ff4f7d;
+}
+
+/* Card Styles */
+.card {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.card-content {
+    padding: 20px;
+    background-color: #fff;
+}
+
+.title {
+    color: #333;
+    font-weight: bold;
+}
+
+.subtitle {
+    color: #555;
+    font-size: 1rem;
+}
+
+/* Buttons */
+.button.is-primary {
+    background-color: #ff3860;
+    border-color: transparent;
+    transition: background-color 0.3s ease;
+    color: #fff;
+}
+
+.button.is-primary:hover {
+    background-color: #ff4f7d;
+}
+
+.button.is-light {
+    background-color: #fff;
+    color: #ff3860;
+    border-color: #ff3860;
+}
+
+.button.is-light:hover {
+    background-color: #ff4f7d;
+    color: #fff;
+    border-color: transparent;
+}
+
+/* Footer */
+.footer {
+    padding: 20px 0;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.footer p {
+    margin: 0;
+}
+
+/* Form styles */
+.field {
+    margin-bottom: 20px;
+}
+
+.input {
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    width: 100%;
+}
+
+.input:focus {
+    border-color: #ff3860;
+    box-shadow: 0 0 5px rgba(255, 56, 96, 0.5);
+}
+
+.label {
+    font-weight: bold;
+    color: #333;
+}
+
+.control .button {
+    width: 100%;
+}
+
+/* Responsive layout */
+@media screen and (max-width: 768px) {
+    .column.is-one-quarter {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
