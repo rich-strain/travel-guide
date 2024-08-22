@@ -81,8 +81,31 @@ router.get('/profile', withAuth, async (req, res) => {
 });
 
 // Use withAuth middleware to prevent access to the newBlog route
-router.get('/newBlog', async (req, res) => {
+router.get('/newBlog', withAuth, async (req, res) => {
   res.render('newBlog');
+});
+
+// GET request to search for destinations
+router.get('/search', withAuth, async (req, res) => {
+  try {
+    const searchQuery = req.query.query.toLowerCase(); // Get the search query and convert it to lowercase
+    const destinationData = await Destination.findAll({
+      include: [{ model: User }], // Include associated user data
+    });
+
+    // Filter the results based on the search query
+    const destinations = destinationData
+      .map((destination) => destination.get({ plain: true }))
+      .filter(destination => destination.city.toLowerCase().includes(searchQuery));
+
+    // Render the homepage with the filtered destinations
+    res.render('homepage', {
+      destinations,
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 module.exports = router;
