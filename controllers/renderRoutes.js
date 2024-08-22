@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { Destination, User } = require('../models');
 const withAuth = require('../utils/auth');
+//const setBytescaleAPI = require('../utils/bytescale');
 
 // GET request to render the homepage or redirect to login/register if not logged in
 router.get('/', (req, res) => {
@@ -96,7 +97,7 @@ router.get('/search', withAuth, async (req, res) => {
     // Filter the results based on the search query
     const destinations = destinationData
       .map((destination) => destination.get({ plain: true }))
-      .filter(destination => destination.city.toLowerCase().includes(searchQuery));
+      .filter((destination) => destination.city.toLowerCase().includes(searchQuery));
 
     // Render the homepage with the filtered destinations
     res.render('homepage', {
