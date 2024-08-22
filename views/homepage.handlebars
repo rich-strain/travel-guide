@@ -4,7 +4,7 @@
 <form action="/search" method="GET">
     <div class="field has-addons">
         <div class="control">
-            <input class="input" type="text" name="query" placeholder="Search destinations">
+            <input class="input" type="text" name="query" placeholder="Search destinations" required>
         </div>
         <div class="control">
             <button type="submit" class="button is-primary">Search</button>
@@ -12,6 +12,7 @@
     </div>
 </form>
 
+<!-- Display destinations -->
 <div class="columns is-multiline">
     {{#each destinations}}
     <div class="column is-full-mobile is-one-quarter-tablet is-one-fifth-desktop">
