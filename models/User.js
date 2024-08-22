@@ -32,17 +32,19 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [8],
+        len: [6], // Ensure the password is at least 6 characters long
       },
     },
   },
   {
     hooks: {
       beforeCreate: async (newUserData) => {
+        // Hash the password before saving it to the database
         newUserData.password = await bcrypt.hash(newUserData.password, 10);
         return newUserData;
       },
       beforeUpdate: async (updatedUserData) => {
+        // Hash the password before updating it in the database
         updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
         return updatedUserData;
       },
