@@ -1,10 +1,10 @@
-<h1 class="title">Explore Destinations</h1>
+<h1 class="title">Explore Blogs</h1>
 
 <!-- Search bar -->
 <form action="/search" method="GET">
     <div class="field has-addons">
         <div class="control">
-            <input class="input" type="text" name="query" placeholder="Search destinations" required>
+            <input class="input" type="text" name="query" placeholder="Search blogs" required>
         </div>
         <div class="control">
             <button type="submit" class="button is-primary">Search</button>
@@ -12,14 +12,15 @@
     </div>
 </form>
 
-<!-- Display destinations -->
+<!-- Display blogs -->
 <div class="columns is-multiline">
-    {{#each destinations}}
+    {{#each blogs}}
     <div class="column is-full-mobile is-one-quarter-tablet is-one-fifth-desktop">
         <div class="card">
             <div class="card-content">
-                <p class="title">{{city}}, {{country}}</p>
-                <p class="subtitle">{{description}}</p>
+                <p class="title">{{title}}</p>
+                <p class="subtitle">{{destination.city}}, {{destination.country}}</p>
+                <p class="content">{{post}}</p>
             </div>
         </div>
     </div>

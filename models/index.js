@@ -2,37 +2,26 @@ const User = require('./User');
 const Destination = require('./Destination');
 const Blogs = require('./blogs');
 
-User.belongsToMany(Destination, {
-  foreignKey: 'user_id',
-  onDelete: 'SET NULL',
-  through: {
-    model: Blogs,
-    unique: false,
-  },
-});
-
-Destination.belongsToMany(User, {
-  foreignKey: 'user_id',
-  onDelete: 'SET NULL',
-  through: {
-    model: Blogs,
-    unique: false,
-  },
-});
-
-// We are setting up the relationship between the User and Blogs models so that a user can have many blogs
-/*
+// A User can have many Blogs
 User.hasMany(Blogs, {
   foreignKey: 'user_id',
-  onDelete: 'SET NULL'
+  onDelete: 'CASCADE',
 });
-*/
-// A BLOG belongs to a SINGLE USER
-/*
+
+// A Blog belongs to a single User
 Blogs.belongsTo(User, {
   foreignKey: 'user_id',
-  onDelete: 'SET NULL'
 });
-*/
+
+// A Destination can have many Blogs
+Destination.hasMany(Blogs, {
+  foreignKey: 'destination_id',
+  onDelete: 'CASCADE',
+});
+
+// A Blog belongs to a single Destination
+Blogs.belongsTo(Destination, {
+  foreignKey: 'destination_id',
+});
 
 module.exports = { User, Destination, Blogs };
