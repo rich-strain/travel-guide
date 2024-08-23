@@ -1,7 +1,9 @@
 const router = require('express').Router();
 const { User } = require('../../models');
 
-// POST new user (Register)
+// all endpoints use api/users
+
+// Register a new user account
 router.post('/register', async (req, res) => {
   try {
     // Check if the email already exists
@@ -50,7 +52,7 @@ router.post('/login', async (req, res) => {
       req.session.name = userData.name;  // Save the user's name in the session
       req.session.logged_in = true;
 
-      res.redirect('/home');  // Redirect to the homepage after login
+      res.redirect('/home'); // Redirect to the homepage after login
     });
   } catch (err) {
     res.status(400).json(err);
@@ -61,7 +63,7 @@ router.post('/login', async (req, res) => {
 router.post('/logout', (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {
-      res.redirect('/');  // Redirect to the main page (login page) after logout
+      res.redirect('/'); // Redirect to the main page (login page) after logout
     });
   } else {
     res.status(404).end();
