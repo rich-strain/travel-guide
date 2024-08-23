@@ -1,7 +1,6 @@
 const router = require('express').Router();
-const { Destination, User } = require('../models');
+const { Destination, Blogs, User } = require('../models');
 const withAuth = require('../utils/auth');
-//const setBytescaleAPI = require('../utils/bytescale');
 
 // GET request to render the homepage or redirect to login/register if not logged in
 router.get('/', (req, res) => {
@@ -12,54 +11,29 @@ router.get('/', (req, res) => {
   }
 });
 
-// GET request to render the registration page
-router.get('/register', (req, res) => {
-  if (req.session.logged_in) {
-    res.redirect('/home');
-    return;
-  }
-
-  res.render('register');
-});
-
-// GET request to render the main homepage with all destinations
+// GET request to render the main homepage with all blogs for the logged-in user
 router.get('/home', withAuth, async (req, res) => {
   try {
-    const destinationData = await Destination.findAll({
-      include: [{ model: User }],
+    // Fetch the blogs for the logged-in user
+    const blogData = await Blogs.findAll({
+      //where: { user_id: req.session.user_id }, // Ensure only the logged-in user's blogs are fetched
+      include: [
+        {
+          model: Destination, // Include the associated Destination model
+          attributes: ['city', 'state', 'country'],
+        },
+      ],
     });
 
-    const destinations = destinationData.map((destination) => destination.get({ plain: true }));
+    const blogs = blogData.map((blog) => blog.get({ plain: true }));
 
     res.render('homepage', {
-      destinations,
+      blogs, // Pass the blogs associated with the logged-in user
       logged_in: req.session.logged_in,
     });
   } catch (err) {
+    console.error('Error fetching blogs:', err);
     res.status(500).json(err);
-  }
-});
-
-// GET request to render a specific destination by id
-router.get('/destination/:id', withAuth, async (req, res) => {
-  try {
-    const destinationData = await Destination.findByPk(req.params.id, {
-      include: [{ model: User }],
-    });
-
-    if (!destinationData) {
-      res.status(404).json({ message: 'Destination Not Found!' });
-      return;
-    }
-
-    const destination = destinationData.get({ plain: true });
-
-    res.render('destination', {
-      destination,
-      logged_in: req.session.logged_in,
-    });
-  } catch (err) {
-    res.status(500).json({ message: err.name });
   }
 });
 
@@ -67,7 +41,12 @@ router.get('/destination/:id', withAuth, async (req, res) => {
 router.get('/profile', withAuth, async (req, res) => {
   try {
     const userData = await User.findByPk(req.session.user_id, {
-      include: [{ model: Destination }],
+      include: [
+        {
+          model: Blogs,
+          include: [Destination], // Ensure the associated Destination data is fetched
+        },
+      ],
     });
 
     const user = userData.get({ plain: true });
@@ -77,12 +56,13 @@ router.get('/profile', withAuth, async (req, res) => {
       logged_in: true,
     });
   } catch (err) {
+    console.error('Error fetching profile:', err);
     res.status(500).json(err);
   }
 });
 
 // Use withAuth middleware to prevent access to the newBlog route
-router.get('/newBlog', withAuth, async (req, res) => {
+router.get('/newBlog', withAuth, (req, res) => {
   res.render('newBlog');
 });
 
@@ -91,7 +71,7 @@ router.get('/search', withAuth, async (req, res) => {
   try {
     const searchQuery = req.query.query.toLowerCase(); // Get the search query and convert it to lowercase
     const destinationData = await Destination.findAll({
-      include: [{ model: User }], // Include associated user data
+      include: [{ model: Blogs, include: [User] }], // Include Blogs and their associated User
     });
 
     // Filter the results based on the search query
@@ -105,6 +85,7 @@ router.get('/search', withAuth, async (req, res) => {
       logged_in: req.session.logged_in,
     });
   } catch (err) {
+    console.error('Error searching destinations:', err);
     res.status(500).json(err);
   }
 });
