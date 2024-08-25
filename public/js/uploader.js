@@ -44,7 +44,26 @@ cancelNewBlog.addEventListener('click', (event) => {
 });
 
 // Detect Submit Button Click, Call handleNewBlog Function
-form.addEventListener('submit', (event) => {
+form.addEventListener('submit', async (event) => {
   event.preventDefault();
-  alert('New Blog Submitted!');
+  // Get the values of the form elements
+  const title = document.getElementById('title').value;
+  const city = document.getElementById('city').value;
+  const state = document.getElementById('state').value;
+  const blogContent = document.getElementById('blogContent').value;
+  const imageURL = document.getElementById('imageURL').value;
+  // Create a new blog object
+  const newBlog = { title, city, state, blogContent, imageURL };
+  // Pass Blog Object to request api
+  const response = await fetch('/api/blogs', {
+    method: 'POST',
+    body: JSON.stringify(newBlog),
+    headers: { 'Content-Type': 'application/json' },
+  });
+  // Redirect to the home page
+  if (response.ok) {
+    document.location.replace('/');
+  } else {
+    alert('Failed to create blog');
+  }
 });
