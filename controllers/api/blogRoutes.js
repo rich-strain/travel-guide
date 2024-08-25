@@ -1,18 +1,21 @@
 const router = require('express').Router();
 const { Blogs, Destination } = require('../../models');
 const withAuth = require('../../utils/auth');
+//const setBytescaleAPI = require('../../utils/bytescale');
 
 // all endpoints use the /api/blogs path
 
 // Creaate New Blog/Destination
 router.post('/', async (req, res) => {
+  // console.log('Req Body: ', req.body);
+  res.json(req.body);
   // destructure req.body to get the individual properties
   const { title, city, state, imageURL, blogContent } = req.body;
-  console.log('Session Oject: ', req.session);
+  // //console.log('Session Oject: ', req.session);
 
   try {
     const newDest = await Destination.create({ city: city, state: state });
-    console.log('newDest: ', newDest);
+    //console.log('newDest: ', newDest);
     const newBlog = await Blogs.create({
       title: title,
       post: blogContent,
@@ -21,13 +24,8 @@ router.post('/', async (req, res) => {
       user_id: req.session.user_id,
       destination_id: newDest.id,
     });
-    console.log('newBlog: ', newBlog);
-    // Sequelize Transaction to ensure both queries are executed, if an error occurs, both queries are rolled back
-    /*  const transaction = await sequelize.transaction();
-    await Blogs.create({ title: title, post: blogContent, image_u_r_l: imageURL, user_id: '1' }, { transaction });
-    await Destination.create({ city: city, state: state, user_id: req.session.user_id }, { transaction });
-    await transaction.commit(); */
-    res.status(200).json(newBlog);
+    //console.log('newBlog: ', newBlog);
+    res.status(200);
   } catch (err) {
     console.log('Err: ', err);
     res.status(500).json(err);

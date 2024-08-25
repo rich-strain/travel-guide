@@ -63,7 +63,7 @@ router.get('/profile', withAuth, async (req, res) => {
 
 // Use withAuth middleware to prevent access to the newBlog route
 router.get('/newBlog', withAuth, (req, res) => {
-  res.render('newBlog');
+  res.render('newBlog', { logged_in: req.session.user_id });
 });
 
 // GET request to search for destinations

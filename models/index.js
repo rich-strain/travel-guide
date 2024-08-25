@@ -13,8 +13,8 @@ Blogs.belongsTo(User, {
   foreignKey: 'user_id',
 });
 
-// A Destination can have many Blogs
-Destination.hasMany(Blogs, {
+// A Blog can have only one destination
+Blogs.hasOne(Destination, {
   foreignKey: 'destination_id',
   onDelete: 'CASCADE',
 });
