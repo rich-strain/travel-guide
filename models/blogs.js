@@ -16,7 +16,7 @@ Blogs.init(
       allowNull: false,
     },
     post: {
-      type: DataTypes.TEXT, // Changed from STRING to TEXT to allow for longer posts, STRING has a limit of 255 characters
+      type: DataTypes.TEXT,
       allowNull: false,
     },
     imageURL: {

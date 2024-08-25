@@ -1,7 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Destination extends Model { }
+class Destination extends Model {}
 
 Destination.init(
   {
@@ -21,14 +21,13 @@ Destination.init(
     },
     country: {
       type: DataTypes.STRING,
-      allowNull: false,
+      defaultValue: 'United States',
     },
     date_created: {
       type: DataTypes.DATE,
       allowNull: false,
       defaultValue: DataTypes.NOW,
     },
-
   },
   {
     sequelize,

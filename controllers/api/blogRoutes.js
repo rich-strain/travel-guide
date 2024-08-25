@@ -1,18 +1,34 @@
 const router = require('express').Router();
-const { Blogs } = require('../../models');
+const { Blogs, Destination } = require('../../models');
 const withAuth = require('../../utils/auth');
+//const setBytescaleAPI = require('../../utils/bytescale');
 
-// POST new blog
-router.post('/', withAuth, async (req, res) => {
+// all endpoints use the /api/blogs path
+
+// Creaate New Blog/Destination
+router.post('/', async (req, res) => {
+  // console.log('Req Body: ', req.body);
+  res.json(req.body);
+  // destructure req.body to get the individual properties
+  const { title, city, state, imageURL, blogContent } = req.body;
+  // //console.log('Session Oject: ', req.session);
+
   try {
+    const newDest = await Destination.create({ city: city, state: state });
+    //console.log('newDest: ', newDest);
     const newBlog = await Blogs.create({
-      ...req.body,
+      title: title,
+      post: blogContent,
+      image_u_r_l: imageURL,
+      date_created: Date.now(),
       user_id: req.session.user_id,
+      destination_id: newDest.id,
     });
-
-    res.status(200).json(newBlog);
+    //console.log('newBlog: ', newBlog);
+    res.status(200);
   } catch (err) {
-    res.status(400).json(err);
+    console.log('Err: ', err);
+    res.status(500).json(err);
   }
 });
 

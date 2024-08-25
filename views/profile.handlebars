@@ -1,18 +1,19 @@
-<h1 class="title">Your Profile</h1>
-<div class="box">
-    <p class="subtitle">Name: {{name}}</p>
-    <p class="subtitle">Email: {{email}}</p>
-    <h2 class="title is-4">Your Destinations:</h2>
-    <div class="columns is-multiline">
-        {{#each destinations}}
-        <div class="column is-one-quarter">
-            <div class="card">
-                <div class="card-content">
-                    <p class="title">{{city}}, {{country}}</p>
-                    <p class="subtitle">{{description}}</p>
-                </div>
-            </div>
+<h1 class='title'>Your Profile</h1>
+<div class='box'>
+  <p class='subtitle'>Name: {{name}}</p>
+  <p class='subtitle'>Email: {{email}}</p>
+  <h2 class='title is-4'>Your Destinations:</h2>
+  <div class='columns is-multiline'>
+    {{#each blogs}}
+      <div class='column is-one-quarter'>
+        <div class='card'>
+          <div class='card-content'>
+            <img src='{{image_u_r_l}}' />
+            <p class='title'>{{destination.city}}, {{destination.country}}</p>
+            <p class='subtitle'>{{post}}</p>
+          </div>
         </div>
-        {{/each}}
-    </div>
+      </div>
+    {{/each}}
+  </div>
 </div>

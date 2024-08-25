@@ -1,20 +1,18 @@
-// Load the Uploader class
-//const { Uploader } = require('uploader'); // require causes an error when run from public folder
-
-// Create an instance of the Uploader class
-const uploader = Uploader({ apiKey: 'free', maxFileCount: 1 });
-
-// Get the button element
-const uploadButton = document.getElementById('uploaderBtn');
-
-// Get imageURL element
-const imageURL = document.getElementById('imageURL');
-
-// Define a variable to hold the uploaded files
+// Define Variables For Uploaded Files
 let returnedArray = [];
 let filePath = '';
+// Create an instance of the Uploader class
+const uploader = Uploader({ apiKey: 'public_FW25cAyGj3zNGY8Y7kCfkqsTd3iS', maxFileCount: 1 });
 
-// Event listener for the upload button
+// Get Elements By ID
+const imageURL = document.getElementById('imageURL');
+const form = document.getElementById('newBlog');
+
+const uploadButton = document.getElementById('uploaderBtn');
+const submitNewBlog = document.getElementById('submitNewBlogBtn');
+const cancelNewBlog = document.getElementById('cancelBtn');
+
+// Detect Image Upload Button Click
 uploadButton.addEventListener('click', (event) => {
   // Prevent Default Behavior
   event.preventDefault();
@@ -36,4 +34,36 @@ uploadButton.addEventListener('click', (event) => {
     .catch((err) => {
       console.error(err);
     });
+});
+
+// Detect Cancel Button Click
+cancelNewBlog.addEventListener('click', (event) => {
+  event.preventDefault();
+  // Redirect to the home page
+  document.location.replace('/');
+});
+
+// Detect Submit Button Click, Call handleNewBlog Function
+form.addEventListener('submit', async (event) => {
+  event.preventDefault();
+  // Get the values of the form elements
+  const title = document.getElementById('title').value;
+  const city = document.getElementById('city').value;
+  const state = document.getElementById('state').value;
+  const blogContent = document.getElementById('blogContent').value;
+  const imageURL = document.getElementById('imageURL').value;
+  // Create a new blog object
+  const newBlog = { title, city, state, blogContent, imageURL };
+  // Pass Blog Object to request api
+  const response = await fetch('/api/blogs', {
+    method: 'POST',
+    body: JSON.stringify(newBlog),
+    headers: { 'Content-Type': 'application/json' },
+  });
+  // Redirect to the home page
+  if (response.ok) {
+    document.location.replace('/');
+  } else {
+    alert('Failed to create blog');
+  }
 });
