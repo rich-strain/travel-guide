@@ -28,20 +28,7 @@ Blogs.init(
       allowNull: false,
       defaultValue: DataTypes.NOW,
     },
-    user_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'user',
-        key: 'id',
-      },
-    },
-    destination_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'destination',
-        key: 'id',
-      },
-    },
+    
   },
   {
     sequelize,
