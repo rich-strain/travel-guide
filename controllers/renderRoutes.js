@@ -2,6 +2,7 @@ const router = require('express').Router();
 const { Destination, Blogs, User } = require('../models');
 const { Op } = require('sequelize');
 const withAuth = require('../utils/auth');
+const setBytescaleAPI = require('../utils/byteScaleKey');
 
 // GET request to render the homepage or redirect to login/register if not logged in
 router.get('/', (req, res) => {
@@ -10,6 +11,10 @@ router.get('/', (req, res) => {
   } else {
     res.render('login'); // Render login page by default
   }
+});
+
+router.get('/register', (req, res) => {
+  res.render('register');
 });
 
 // GET request to render the main homepage with all blogs for the logged-in user
@@ -61,9 +66,41 @@ router.get('/profile', withAuth, async (req, res) => {
   }
 });
 
+// GET Blog By Req Param Id
+router.get('/blog/:id', withAuth, async (req, res) => {
+  // console.log(`Blog ID: ${req.params.id}`);
+
+  // res.send(`Blog ID: ${req.params.id}`);
+  try {
+    const blogData = await Blogs.findByPk(req.params.id, {
+      include: [
+        {
+          model: Destination, // Include the associated Destination model
+          attributes: ['city', 'state', 'country'],
+        },
+      ],
+    });
+
+    const blog = blogData.get({ plain: true });
+    console.log(`Blog data: ${JSON.stringify(blog)}`);
+
+    res.render('singleBlog', {
+      blog, // Pass the blog associated with the logged-in user
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    console.error('Error fetching blog:', err);
+    res.status(500).json(err);
+  }
+});
+
 // New Blog Form
 router.get('/newBlog', withAuth, (req, res) => {
-  res.render('newBlog', { logged_in: req.session.user_id });
+  console.log('Bytescale API Key: ', req.session);
+  res.render('newBlog', {
+    logged_in: req.session.user_id,
+    bytescaleAPI: req.session.key,
+  });
 });
 
 // Search Blog Destinations
@@ -71,7 +108,13 @@ router.get('/search', withAuth, async (req, res) => {
   console.log(`Search query: ${req.query.query}`);
   try {
     const blogData = await Blogs.findAll({
-      include: [{ model: Destination, attributes: ['city', 'state', 'country'], where: { city: { [Op.like]: `%${req.query.query}%` } } }],
+      include: [
+        {
+          model: Destination,
+          attributes: ['city', 'state', 'country'],
+          where: { city: { [Op.like]: `%${req.query.query}%` } },
+        },
+      ],
     });
 
     const blogs = blogData.map((blog) => blog.get({ plain: true }));

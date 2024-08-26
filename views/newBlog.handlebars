@@ -77,7 +77,12 @@
   <div class='field'>
     <label class='label'>Image URL</label>
     <div class='control'>
-      <input class='input is-static' type='text' placeholder='Image URL' id='imageURL' />
+      <input
+        class='input is-static'
+        type='text'
+        placeholder='Image URL'
+        id='imageURL'
+      />
     </div>
     <div class='control'>
       <button class='button is-link' id='uploaderBtn'>Upload Image</button>
@@ -87,18 +92,28 @@
   <div class='field'>
     <label class='label'>Blog Content</label>
     <div class='control'>
-      <textarea class='textarea' placeholder='Textarea' id='blogContent'></textarea>
+      <textarea
+        class='textarea'
+        placeholder='Textarea'
+        id='blogContent'
+      ></textarea>
     </div>
   </div>
 
   <div class='field is-grouped'>
     <div class='control'>
-      <button class='button is-link' type='submit' id='submitNewBlogBtn'>Submit</button>
+      <button
+        class='button is-link'
+        type='submit'
+        id='submitNewBlogBtn'
+      >Submit</button>
     </div>
     <div class='control'>
       <button class='button is-link is-light' id='cancelBtn'>Cancel</button>
     </div>
   </div>
 </form>
+<p class='is-hidden' id='keyStatus'>{{bytescaleAPI}}</p>
+{{! Add the following script tags to the bottom of the file: }}
 <script src='https://js.bytescale.com/uploader/v3'></script>
 <script src='./js/uploader.js'></script>
