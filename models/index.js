@@ -14,16 +14,16 @@ Blogs.belongsTo(User, {
   foreignKey: 'user_id',
 });
 
-// A Blog can have only one destination
-Blogs.hasOne(Destination, {
-  foreignKey: 'destination_id',
-  onDelete: 'CASCADE',
-});
-
-// // A Blog belongs to a single Destination
-// Blogs.belongsTo(Destination, {
+// // A Blog can have only one destination
+// Blogs.hasOne(Destination, {
 //   foreignKey: 'destination_id',
+//   onDelete: 'CASCADE',
 // });
+
+// A Blog belongs to a single Destination
+Blogs.belongsTo(Destination, {
+  foreignKey: 'destination_id',
+});
 
 // // User Belongs to Many Destinations
 // User.belongsToMany(Destination, {
