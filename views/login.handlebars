@@ -1,25 +1,24 @@
-<h1 class="title">Login</h1>
-
 <form action="/api/users/login" method="POST">
-    <div class="field">
-        <label class="label">Email</label>
-        <div class="control">
-            <input class="input" type="email" name="email" placeholder="Your Email" required>
-        </div>
+  {{#if errorMessage}}
+    <div class="notification is-danger">
+      {{errorMessage}}
     </div>
-
-    <div class="field">
-        <label class="label">Password</label>
-        <div class="control">
-            <input class="input" type="password" name="password" placeholder="Your Password" required>
-        </div>
-    </div>
-
+  {{/if}}
+  <div class="field">
+    <label class="label">Email</label>
     <div class="control">
-        <button class="button is-primary" type="submit">Login</button>
+      <input class="input" type="email" name="email" required>
     </div>
+  </div>
+  <div class="field">
+    <label class="label">Password</label>
+    <div class="control">
+      <input class="input" type="password" name="password" required>
+    </div>
+  </div>
+  <div class="control">
+    <button class="button is-primary" type="submit">Login</button>
+  </div>
 </form>
 
-<p class="has-text-centered">
-    Don't have an account? <a href="/register">Register here</a>.
-</p>
+<p>Don't have an account? <a href="/register">Register here</a></p>

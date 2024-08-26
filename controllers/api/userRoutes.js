@@ -26,15 +26,13 @@ router.post('/login', async (req, res) => {
     const userData = await User.findOne({ where: { email: req.body.email } });
 
     if (!userData) {
-      res.status(400).json({ message: 'Invalid Login Credentials' });
-      return;
+      return res.status(400).render('login', { errorMessage: 'Invalid Login Credentials' });
     }
 
     const validPassword = await userData.checkPassword(req.body.password);
 
     if (!validPassword) {
-      res.status(400).json({ message: 'Invalid Login Credentials' });
-      return;
+      return res.status(400).render('login', { errorMessage: 'Invalid Login Credentials' });
     }
 
     req.session.save(() => {
@@ -44,7 +42,7 @@ router.post('/login', async (req, res) => {
       res.redirect('/home'); // Redirect to the homepage after login
     });
   } catch (err) {
-    res.status(400).json(err);
+    res.status(500).json(err); // Changed from 400 to 500 for server errors
   }
 });
 
