@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { User } = require('../../models');
+require('dotenv').config();
 
 // all endpoints use api/users
 
@@ -11,8 +12,8 @@ router.post('/register', async (req, res) => {
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
-
-      res.status(200).json(userData);
+      req.session.key = process.env.BYTESCALE_API_KEY;
+      res.status(201).redirect('/home'); // Redirect to the homepage after login
     });
   } catch (err) {
     res.status(400).json(err);
@@ -39,7 +40,7 @@ router.post('/login', async (req, res) => {
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
-
+      req.session.key = process.env.BYTESCALE_API_KEY;
       res.redirect('/home'); // Redirect to the homepage after login
     });
   } catch (err) {

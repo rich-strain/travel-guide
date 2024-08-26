@@ -1,8 +1,13 @@
+let key = document.getElementById('keyStatus').textContent;
+console.log('Uploader API Key is: ', key);
 // Define Variables For Uploaded Files
 let returnedArray = [];
 let filePath = '';
-// Create an instance of the Uploader class
-const uploader = Uploader({ apiKey: 'public_FW25cAyGj3zNGY8Y7kCfkqsTd3iS', maxFileCount: 1 });
+
+const uploader = Uploader({
+  apiKey: key,
+  maxFileCount: 1,
+});
 
 // Get Elements By ID
 const imageURL = document.getElementById('imageURL');
