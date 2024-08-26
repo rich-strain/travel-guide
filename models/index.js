@@ -2,6 +2,7 @@ const User = require('./User');
 const Destination = require('./Destination');
 const Blogs = require('./blogs');
 
+// Works But Two Desinations Are Swapped During Seeding
 // A User can have many Blogs
 User.hasMany(Blogs, {
   foreignKey: 'user_id',
@@ -19,9 +20,21 @@ Blogs.hasOne(Destination, {
   onDelete: 'CASCADE',
 });
 
-// A Blog belongs to a single Destination
-Blogs.belongsTo(Destination, {
-  foreignKey: 'destination_id',
-});
+// // A Blog belongs to a single Destination
+// Blogs.belongsTo(Destination, {
+//   foreignKey: 'destination_id',
+// });
+
+// // User Belongs to Many Destinations
+// User.belongsToMany(Destination, {
+//   through: Blogs,
+//   unique: false,
+// });
+
+// // Destination Belongs to Many Users
+// Destination.belongsToMany(User, {
+//   through: Blogs,
+//   unique: false,
+// });
 
 module.exports = { User, Destination, Blogs };
