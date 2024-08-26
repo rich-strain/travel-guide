@@ -1,0 +1,24 @@
+<!-- Display single blog -->
+<div class='columns is-multiline'>
+  <div class='column is-full-mobile is-one-quarter-tablet is-half-desktop'>
+    <div class='card'>
+      <div class='card-image'>
+        <figure class='image is-4by3'>
+          <img src='{{blog.image_url}}' alt='Main image of destination'
+        </figure>
+      </div>
+      <div class='card-content'>
+        <div class='media'>
+          <div class='media-content'>
+            <p class='title is-4'>{{blog.title}}</p>
+            {{!-- <p class='subtitle is-6'>{{blog.destination.state}}</p> --}}
+          </div>
+        </div>
+
+        <div class='content'>
+          {{blog.post}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

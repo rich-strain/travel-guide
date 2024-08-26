@@ -4,7 +4,13 @@
 <form action='/search' method='GET'>
   <div class='field has-addons'>
     <div class='control'>
-      <input class='input' type='text' name='query' placeholder='Search blogs' required />
+      <input
+        class='input'
+        type='text'
+        name='query'
+        placeholder='Search blogs'
+        required
+      />
     </div>
     <div class='control'>
       <button type='submit' class='button is-primary'>Search</button>
@@ -15,11 +21,16 @@
 <!-- Display blogs -->
 <div class='columns is-multiline'>
   {{#each blogs}}
-    <div class='column is-full-mobile is-one-quarter-tablet is-half-desktop'>
+    <div
+      class='column is-full-mobile is-one-quarter-tablet is-one-third-desktop'
+    >
       <div class='card'>
         <div class='card-image'>
           <figure class='image is-4by3'>
-            <img src='{{image_url}}' alt='Main image of destination' />
+            <a href='/blog/{{id}}'><img
+                src='{{image_url}}'
+                alt='Main image of destination'
+              /></a>
           </figure>
         </div>
         <div class='card-content'>
@@ -30,9 +41,9 @@
             </div>
           </div>
 
-          <div class='content'>
+          {{!-- <div class='content'>
             {{post}}
-          </div>
+          </div> --}}
         </div>
       </div>
     </div>
