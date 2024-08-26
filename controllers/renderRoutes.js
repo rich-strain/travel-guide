@@ -26,7 +26,7 @@ router.get('/home', withAuth, async (req, res) => {
     });
 
     const blogs = blogData.map((blog) => blog.get({ plain: true }));
-
+    console.log(`Blog data: ${JSON.stringify(blogs)}`);
     res.render('homepage', {
       blogs, // Pass the blogs associated with the logged-in user
       logged_in: req.session.logged_in,
@@ -40,20 +40,34 @@ router.get('/home', withAuth, async (req, res) => {
 // GET request to render the user's profile page
 router.get('/profile', withAuth, async (req, res) => {
   try {
-    const userData = await User.findByPk(req.session.user_id, {
+    // const userData = await User.findByPk(req.session.user_id, {
+    //   include: [
+    //     {
+    //       model: Blogs,
+    //       include: [Destination], // Ensure the associated Destination data is fetched
+    //     },
+    //   ],
+    // });
+    const blogData = await Blogs.findAll({
+      where: { user_id: req.session.user_id },
       include: [
         {
-          model: Blogs,
-          include: [Destination], // Ensure the associated Destination data is fetched
+          model: Destination, // Include the associated Destination model
+          attributes: ['city', 'state', 'country'],
         },
       ],
     });
-
-    const user = userData.get({ plain: true });
-
-    res.render('profile', {
-      ...user,
-      logged_in: true,
+    // const user = blogData.get({ plain: true });
+    // console.log(`User data: ${JSON.stringify(user)}`);
+    // res.render('profile', {
+    //   ...user,
+    //   logged_in: true,
+    // });
+    const blogs = blogData.map((blog) => blog.get({ plain: true }));
+    console.log(`Blog data: ${JSON.stringify(blogs)}`);
+    res.render('homepage', {
+      blogs, // Pass the blogs associated with the logged-in user
+      logged_in: req.session.logged_in,
     });
   } catch (err) {
     console.error('Error fetching profile:', err);
