@@ -1,28 +1,40 @@
-<h1 class="title">Explore Blogs</h1>
+<h1 class='title'>Explore Blogs</h1>
 
 <!-- Search bar -->
-<form action="/search" method="GET">
-    <div class="field has-addons">
-        <div class="control">
-            <input class="input" type="text" name="query" placeholder="Search blogs" required>
-        </div>
-        <div class="control">
-            <button type="submit" class="button is-primary">Search</button>
-        </div>
+<form action='/search' method='GET'>
+  <div class='field has-addons'>
+    <div class='control'>
+      <input class='input' type='text' name='query' placeholder='Search blogs' required />
     </div>
+    <div class='control'>
+      <button type='submit' class='button is-primary'>Search</button>
+    </div>
+  </div>
 </form>
 
 <!-- Display blogs -->
-<div class="columns is-multiline">
-    {{#each blogs}}
-    <div class="column is-full-mobile is-one-quarter-tablet is-one-fifth-desktop">
-        <div class="card">
-            <div class="card-content">
-                <p class="title">{{title}}</p>
-                <p class="subtitle">{{destination.city}}, {{destination.country}}</p>
-                <p class="content">{{post}}</p>
-            </div>
+<div class='columns is-multiline'>
+  {{#each blogs}}
+    <div class='column is-full-mobile is-one-quarter-tablet is-half-desktop'>
+      <div class='card'>
+        <div class='card-image'>
+          <figure class='image is-4by3'>
+            <img src='{{image_url}}' alt='Main image of destination' />
+          </figure>
         </div>
+        <div class='card-content'>
+          <div class='media'>
+            <div class='media-content'>
+              <p class='title is-4'>{{destination.city}}</p>
+              <p class='subtitle is-6'>{{destination.state}}</p>
+            </div>
+          </div>
+
+          <div class='content'>
+            {{post}}
+          </div>
+        </div>
+      </div>
     </div>
-    {{/each}}
+  {{/each}}
 </div>

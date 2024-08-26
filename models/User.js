@@ -35,20 +35,6 @@ User.init(
         len: [8],
       },
     },
-    destination_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'destination',
-        key: 'id',
-      },
-    },
-    blog_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'blogs',
-        key: 'id',
-      },
-    },
   },
   {
     hooks: {

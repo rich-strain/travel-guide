@@ -19,7 +19,7 @@ Blogs.init(
       type: DataTypes.TEXT,
       allowNull: false,
     },
-    imageURL: {
+    image_url: {
       type: DataTypes.STRING,
       allowNull: true,
     },

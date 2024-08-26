@@ -25,7 +25,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Session management
 const sess = {
-  secret: 'Super secret secret',
+  secret: 'process.env.SESSION_SECRET',
   cookie: {
     maxAge: 3000000, // 50 minutes
     httpOnly: true,
