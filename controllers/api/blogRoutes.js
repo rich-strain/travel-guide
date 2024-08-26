@@ -19,7 +19,7 @@ router.post('/', async (req, res) => {
     const newBlog = await Blogs.create({
       title: title,
       post: blogContent,
-      image_u_r_l: imageURL,
+      image_url: imageURL,
       date_created: Date.now(),
       user_id: req.session.user_id,
       destination_id: newDest.id,
