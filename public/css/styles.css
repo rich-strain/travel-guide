@@ -1,110 +1,161 @@
-/* Base styles for the handlebars */
+/* Base styles */
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f4f4;
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(45deg, #f5f5f5, #cccccc);
     color: #333;
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
 }
 
 /* Navbar */
 .navbar {
-    background-color: #ff3860;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #3a3f44;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.navbar:hover {
+    background-color: #33383d;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
 }
 
 .navbar-item {
-    color: white;
-    font-weight: bold;
+    color: #e0e0e0;
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    padding: 0.75rem 1rem;
+    transition: color 0.3s ease;
 }
 
 .navbar-item:hover {
-    background-color: #ff4f7d;
+    color: #f5c842;
 }
 
 /* Card Styles */
 .card {
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
     overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: #f2f2f2;
+}
+
+.card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .card-content {
-    padding: 20px;
-    background-color: #fff;
+    padding: 1.5rem;
+    background: radial-gradient(circle, #e0e0e0, #bdbdbd);
+    color: #333;
 }
 
+/* Titles */
 .title {
-    color: #333;
+    color: #666;
     font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    font-size: 2rem;
+    text-align: center;
 }
 
 .subtitle {
-    color: #555;
-    font-size: 1rem;
+    color: #888;
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
 /* Buttons */
 .button.is-primary {
-    background-color: #ff3860;
-    border-color: transparent;
-    transition: background-color 0.3s ease;
-    color: #fff;
+    background-color: #3a3f44;
+    border: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    color: #e0e0e0;
+    border-radius: 25px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .button.is-primary:hover {
-    background-color: #ff4f7d;
+    background-color: #292c2f;
+    transform: scale(1.05);
 }
 
 .button.is-light {
-    background-color: #fff;
-    color: #ff3860;
-    border-color: #ff3860;
+    background-color: #e0e0e0;
+    color: #3a3f44;
+    border: 2px solid #666;
+    border-radius: 25px;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .button.is-light:hover {
-    background-color: #ff4f7d;
+    background-color: #bdbdbd;
     color: #fff;
-    border-color: transparent;
+    transform: scale(1.05);
 }
 
 /* Footer */
 .footer {
-    padding: 20px 0;
-    background-color: #333;
-    color: white;
+    padding: 2rem 0;
+    background-color: #3a3f44;
+    color: #bdbdbd;
     text-align: center;
-    font-size: 0.9rem;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .footer p {
     margin: 0;
+    animation: flicker 1.5s infinite;
 }
 
-/* Form styles */
-.field {
-    margin-bottom: 20px;
-}
-
+/* Input Fields */
 .input {
-    border-radius: 5px;
-    border: 1px solid #ddd;
-    padding: 10px;
-    width: 100%;
+    border-radius: 20px;
+    border: 2px solid #888;
+    padding: 0.75rem;
+    font-size: 1rem;
+    background-color: #f5f5f5;
+    color: #333;
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .input:focus {
-    border-color: #ff3860;
-    box-shadow: 0 0 5px rgba(255, 56, 96, 0.5);
-}
-
-.label {
-    font-weight: bold;
+    border-color: #888;
+    box-shadow: 0 0 10px rgba(136, 136, 136, 0.3);
+    outline: none;
+    background-color: #e0e0e0;
     color: #333;
 }
 
-.control .button {
-    width: 100%;
+/* Custom Animations */
+@keyframes flicker {
+    0%, 18%, 20%, 22%, 25%, 50%, 53%, 100% {
+        opacity: 1;
+    }
+    19%, 21%, 24%, 52% {
+        opacity: 0;
+    }
+}
+
+@keyframes pop {
+    0% {
+        transform: scale(0.95);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.navbar, .card, .button, .footer p {
+    animation: pop 0.4s ease;
 }
 
 /* Responsive layout */
