@@ -1,4 +1,4 @@
-# e-Commerce Backend
+# Travel Guide
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
@@ -12,8 +12,6 @@ A travel diary or blog based on an Express.js API back end that utilizes Sequali
 - [Usage](#usage)
 - [License](#license)
 - [Contributing](#contributing)
-- [Tests](#tests)
-- [Questions](#questions)
 
 ## Installation
 
